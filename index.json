@@ -18,6 +18,13 @@
       "author": "cubman3134",
       "description": "A spinning EmulationStation/RetroBat-style carousel. Media types and catalogues become an infinite, box-art slider that you spin through with the arrow keys.",
       "file": "themes/Slider.json"
+    },
+    {
+      "name": "Triple",
+      "author": "cubman3134",
+      "description": "A PlayStation 3 XrossMediaBar (XMB): a horizontal bar of media-type icons crossed with the active category's vertical item column, over a dark blue wave background. Fully arrow-key / controller navigable.",
+      "file": "themes/Triple.json",
+      "assets": ["themes/triple-bg.png"]
     }
   ]
 }
