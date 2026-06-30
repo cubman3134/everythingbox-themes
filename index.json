@@ -20,11 +20,43 @@
       "file": "themes/Slider.json"
     },
     {
-      "name": "Triple",
+      "name": "Triple (Classic XMB)",
       "author": "cubman3134",
-      "description": "A PlayStation 3 XrossMediaBar (XMB): a horizontal bar of media-type icons crossed with the active category's vertical item column, over a dark blue wave background. Fully arrow-key / controller navigable.",
+      "description": "The original colour-theme XMB layout (native cross). Superseded by the declarative \"Triple\" theme below.",
       "file": "themes/Triple.json",
       "assets": ["themes/triple-bg.png"]
+    }
+  ],
+  "themes2": [
+    {
+      "name": "Default",
+      "author": "My Media Vault",
+      "description": "The default themed home: a centred system carousel with a poster, title, rating and a help bar.",
+      "dir": "themes2/Default"
+    },
+    {
+      "name": "Grid",
+      "author": "My Media Vault",
+      "description": "A dense poster grid of your catalogs with a live preview + detail panel.",
+      "dir": "themes2/Grid"
+    },
+    {
+      "name": "Lumen",
+      "author": "My Media Vault",
+      "description": "A light theme: a five-wide poster grid on a near-white background.",
+      "dir": "themes2/Lumen"
+    },
+    {
+      "name": "Midnight",
+      "author": "My Media Vault",
+      "description": "A dark theme with a centred carousel, a full detail view, and a subtle starfield.",
+      "dir": "themes2/Midnight"
+    },
+    {
+      "name": "Triple",
+      "author": "cubman3134",
+      "description": "A PlayStation-style XrossMediaBar: four media categories (Video / Games / Audio / Reading) crossed with the selected category's item column, over an animated wave, with navigation sounds. Drawn icons, fully arrow-key / controller / mouse navigable.",
+      "dir": "themes2/Triple"
     }
   ]
 }
