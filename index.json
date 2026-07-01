@@ -7,6 +7,12 @@
       "dir": "themes2/Default"
     },
     {
+      "name": "Channels",
+      "author": "cubman3134",
+      "description": "A Nintendo Wii-menu-style launcher: your catalogs as rounded colour channel tiles with name plates on a soft light-blue gradient; the selected channel gets a blue ring and pops. Arrow-key / mouse navigable.",
+      "dir": "themes2/Channels"
+    },
+    {
       "name": "Grid",
       "author": "My Media Vault",
       "description": "A dense poster grid of your catalogs with a live preview + detail panel.",

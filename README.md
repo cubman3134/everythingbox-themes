@@ -26,4 +26,4 @@ directory (next to `MyMediaVault.exe`, e.g. `C:\MyMediaVault-app\themes2\<Theme>
 3. Open a pull request.
 
 See **[`THEME_FORMAT.md`](THEME_FORMAT.md)** for the full element/layout reference, and copy any of the shipped
-folders (`Default`, `Grid`, `Lumen`, `Midnight`, `Triple`) as a starting point.
+folders (`Default`, `Grid`, `Lumen`, `Midnight`, `Triple`, `Channels`) as a starting point.
