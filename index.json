@@ -31,6 +31,15 @@
       "dir": "themes2/Midnight"
     },
     {
+      "name": "Night",
+      "author": "EverythingBox",
+      "description": "A dark desktop library: a persistent category rail down the left, a dense cover grid as the main surface, and a details pane that follows the selection with artwork and metadata. Low-chrome and high-contrast — the content is the bright thing. Built for a monitor and a mouse, fully keyboard navigable.",
+      "dir": "themes2/Night",
+      "formFactors": [
+        "desktop"
+      ]
+    },
+    {
       "name": "Triple",
       "author": "cubman3134",
       "description": "A PlayStation-style XrossMediaBar: four media categories (Video / Games / Audio / Reading) crossed with the selected category's item column, over an animated wave, with navigation sounds. Drawn icons, fully arrow-key / controller / mouse navigable.",
