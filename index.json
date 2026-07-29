@@ -2,7 +2,7 @@
   "themes2": [
     {
       "name": "Default",
-      "author": "My Media Vault",
+      "author": "EverythingBox",
       "description": "The default themed home: a centred system carousel with a poster, title, rating and a help bar.",
       "dir": "themes2/Default"
     },
@@ -14,19 +14,19 @@
     },
     {
       "name": "Grid",
-      "author": "My Media Vault",
+      "author": "EverythingBox",
       "description": "A dense poster grid of your catalogs with a live preview + detail panel.",
       "dir": "themes2/Grid"
     },
     {
       "name": "Lumen",
-      "author": "My Media Vault",
+      "author": "EverythingBox",
       "description": "A light theme: a five-wide poster grid on a near-white background.",
       "dir": "themes2/Lumen"
     },
     {
       "name": "Midnight",
-      "author": "My Media Vault",
+      "author": "EverythingBox",
       "description": "A dark theme with a centred carousel, a full detail view, and a subtle starfield.",
       "dir": "themes2/Midnight"
     },
