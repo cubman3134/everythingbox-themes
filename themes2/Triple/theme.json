@@ -1,6 +1,6 @@
 {
   "name": "Triple",
-  "author": "My Media Vault",
+  "author": "EverythingBox",
   "sounds": { "navigate": "sounds/move.wav", "select": "sounds/select.wav", "back": "sounds/back.wav", "volume": 0.5 },
   "views": {
     "home": {
