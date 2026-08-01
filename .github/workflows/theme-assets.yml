@@ -1,0 +1,31 @@
+# Reject a theme whose asset paths the app will refuse, while the author is still here to fix it.
+#
+# The app resolves every path a theme.json names relative to that theme's own folder and refuses
+# anything landing outside it — a `../` escape, an absolute path, a remote URL. Refused means the
+# element draws its placeholder and the sound stays silent, with nothing on screen to explain why.
+# Without this gate that lands on whoever installs the theme, not on the person who can fix it.
+#
+# Runs on ubuntu, deliberately: the filesystem is CASE-SENSITIVE there, so a theme authored on
+# Windows referencing "Art/BG.jpg" for a file named "art/bg.jpg" fails here rather than on a Linux
+# user's machine.
+name: theme assets
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Runs first and on its own, so a rule that has drifted from the app is reported as a broken
+      # GATE rather than as a verdict about the themes. It exits 2; the theme scan exits 1.
+      - name: Rule still matches the app
+        run: python3 tools/check-theme-assets.py --self-test
+
+      - name: Every theme's assets stay inside its own folder
+        run: python3 tools/check-theme-assets.py
