@@ -5,6 +5,11 @@
 # element draws its placeholder and the sound stays silent, with nothing on screen to explain why.
 # Without this gate that lands on whoever installs the theme, not on the person who can fix it.
 #
+# The gate holds NO copy of that rule. It downloads the app's own Theme.js and runs it, so the
+# verdicts come from the same bytes the app ships and there is nothing to drift. The cost is that
+# this workflow needs the network and node, and that a rule change in EverythingBox takes effect
+# here as soon as it lands on `main`. Each step below fails closed; none degrades to "assume fine".
+#
 # Runs on ubuntu, deliberately: the filesystem is CASE-SENSITIVE there, so a theme authored on
 # Windows referencing "Art/BG.jpg" for a file named "art/bg.jpg" fails here rather than on a Linux
 # user's machine.
@@ -15,6 +20,10 @@ on:
     branches: [main]
   pull_request:
   workflow_dispatch:
+  # The rule lives in ANOTHER repo, so this can begin failing without anything changing here. A
+  # weekly run surfaces that on its own schedule rather than inside some contributor's PR.
+  schedule:
+    - cron: "17 6 * * 1"
 
 jobs:
   check:
@@ -22,10 +31,28 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Runs first and on its own, so a rule that has drifted from the app is reported as a broken
-      # GATE rather than as a verdict about the themes. It exits 2; the theme scan exits 1.
-      - name: Rule still matches the app
-        run: python3 tools/check-theme-assets.py --self-test
+      # Pinned rather than relying on whatever the runner image happens to ship, since the gate
+      # cannot run at all without it.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      # Its own step, with retries, so a network blip reads as "could not fetch the rule" rather
+      # than as a verdict about somebody's theme. --fail turns an HTTP error into a non-zero exit
+      # instead of a saved error page, which would otherwise fail the next step more confusingly.
+      - name: Fetch the app's asset rule
+        run: |
+          curl -sS --fail --retry 3 --retry-delay 2 --retry-all-errors \
+            -o /tmp/Theme.js \
+            https://raw.githubusercontent.com/cubman3134/EverythingBox/main/native/src/theme2/qml/Theme.js
+          test -s /tmp/Theme.js
+          echo "sha256: $(sha256sum /tmp/Theme.js | cut -d' ' -f1)"
+
+      # Before any theme is judged: prove what we downloaded evaluates and really is the asset rule.
+      # Exits 2 where a theme problem exits 1, so a broken gate is never mistaken for a bad
+      # submission — and a PERMISSIVE impostor is caught here rather than silently passing everything.
+      - name: The downloaded rule loads and is the asset rule
+        run: python3 tools/check-theme-assets.py --rule /tmp/Theme.js --rule-check
 
       - name: Every theme's assets stay inside its own folder
-        run: python3 tools/check-theme-assets.py
+        run: python3 tools/check-theme-assets.py --rule /tmp/Theme.js
